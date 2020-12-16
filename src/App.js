@@ -5,18 +5,18 @@ import DataCard from './DataCard';
 import { connect } from 'react-redux';
 import DisplayCard from './DisplayCard';
 
-const Headers = ['Karnataka', 'Gujarat'];
+const Headers = ['Portugal', 'Nikaragua'];
 
 const Card1Data = [
-  { id: 1, name: 'All', checked: false },
-  { id: 2, name: 'Bangalore', checked: false },
-  { id: 3, name: 'Mysore', checked: false },
+  { id: 1, name: 'Aasiya Jayavant', checked: false },
+  { id: 2, name: 'Luvleen Lawrence', checked: false },
+  { id: 3, name: 'Rey Mibourne', checked: false },
 ];
 
 const Card2Data = [
-  { id: 1, name: 'All', checked: false },
-  { id: 2, name: 'Kutch', checked: false },
-  { id: 3, name: 'Rajkot', checked: false },
+  { id: 1, name: 'Deveedaas Nandi', checked: false },
+  { id: 2, name: 'Obasey Chindy', checked: false },
+  { id: 3, name: 'Xenie Dolezelova', checked: false },
 ];
 
 class App extends Component {

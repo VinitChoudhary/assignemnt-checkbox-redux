@@ -12,13 +12,7 @@ class DisplayCard extends Component {
       }
       return item;
     });
-    const finalData = updatedData.map((item) => {
-      if (item.name === 'All') {
-        return { ...item, checked: false };
-      }
-      return item;
-    });
-    await dispatch({ type: 'FIRST_CARD_DATA', payload: finalData });
+    await dispatch({ type: 'FIRST_CARD_DATA', payload: updatedData });
   };
 
   onSecondCardChange = async (event, id, name) => {
@@ -29,24 +23,18 @@ class DisplayCard extends Component {
       }
       return item;
     });
-    const finalData = updatedData.map((item) => {
-      if (item.name === 'All') {
-        return { ...item, checked: false };
-      }
-      return item;
-    });
-    await dispatch({ type: 'SECOND_CARD_DATA', payload: finalData });
+    await dispatch({ type: 'SECOND_CARD_DATA', payload: updatedData });
   };
 
   render() {
     const { data, firstCardData, secondCardData } = this.props;
-    const isFirstChecked = (item) => item.checked === true && item.name !== 'All';
+    const isFirstChecked = (item) => item.checked === true;
     const isFirstData = firstCardData.some(isFirstChecked);
-    const firstDisplay = firstCardData.filter((item) => item.checked && item.name !== 'All');
+    const firstDisplay = firstCardData.filter((item) => item.checked);
 
-    const isSecondChecked = (item) => item.checked === true && item.name !== 'All';
+    const isSecondChecked = (item) => item.checked === true;
     const isSecondData = secondCardData.some(isSecondChecked);
-    const secondDisplay = secondCardData.filter((item) => item.checked && item.name !== 'All');
+    const secondDisplay = secondCardData.filter((item) => item.checked);
 
     const isData = !isFirstData && !isSecondData;
     return (

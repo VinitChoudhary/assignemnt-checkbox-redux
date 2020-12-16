@@ -5,76 +5,24 @@ import { Grid, Checkbox, Typography } from '@material-ui/core';
 class DataCard extends Component {
   onFirstCardChange = async (event, id, name) => {
     const { firstCardData, dispatch } = this.props;
-    if (name === 'All') {
-      const updatedData = firstCardData.map((item) => {
+    const updatedData = firstCardData.map((item) => {
+      if (item.id === id) {
         return { ...item, checked: event.target.checked };
-      });
-      await dispatch({ type: 'FIRST_CARD_DATA', payload: updatedData });
-    } else {
-      const updatedData = firstCardData.map((item) => {
-        if (item.id === id) {
-          return { ...item, checked: event.target.checked };
-        }
-        return item;
-      });
-      const firstDisplay = updatedData.filter((item) => item.name !== 'All');
-      const isFirstChecked = (item) => item.checked === true;
-      const isFirstData = firstDisplay.every(isFirstChecked);
-      let finalData = [];
-      if (isFirstData) {
-        finalData = updatedData.map((item) => {
-          if (item.name === 'All') {
-            return { ...item, checked: true };
-          }
-          return item;
-        });
-      } else {
-        finalData = updatedData.map((item) => {
-          if (item.name === 'All') {
-            return { ...item, checked: false };
-          }
-          return item;
-        });
       }
-      await dispatch({ type: 'FIRST_CARD_DATA', payload: finalData });
-    }
+      return item;
+    });
+    await dispatch({ type: 'FIRST_CARD_DATA', payload: updatedData });
   };
 
   onSecondCardChange = async (event, id, name) => {
     const { secondCardData, dispatch } = this.props;
-    if (name === 'All') {
-      const updatedData = secondCardData.map((item) => {
+    const updatedData = secondCardData.map((item) => {
+      if (item.id === id) {
         return { ...item, checked: event.target.checked };
-      });
-      await dispatch({ type: 'SECOND_CARD_DATA', payload: updatedData });
-    } else {
-      const updatedData = secondCardData.map((item) => {
-        if (item.id === id) {
-          return { ...item, checked: event.target.checked };
-        }
-        return item;
-      });
-      const firstDisplay = updatedData.filter((item) => item.name !== 'All');
-      const isFirstChecked = (item) => item.checked === true;
-      const isFirstData = firstDisplay.every(isFirstChecked);
-      let finalData = [];
-      if (isFirstData) {
-        finalData = updatedData.map((item) => {
-          if (item.name === 'All') {
-            return { ...item, checked: true };
-          }
-          return item;
-        });
-      } else {
-        finalData = updatedData.map((item) => {
-          if (item.name === 'All') {
-            return { ...item, checked: false };
-          }
-          return item;
-        });
       }
-      await dispatch({ type: 'SECOND_CARD_DATA', payload: finalData });
-    }
+      return item;
+    });
+    await dispatch({ type: 'SECOND_CARD_DATA', payload: updatedData });
   };
 
   render() {
